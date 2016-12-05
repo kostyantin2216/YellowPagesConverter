@@ -7,7 +7,7 @@ Currently this only works with:
 This project is for personal use and i will probably not pay attention to issues unless they somehow effect my use case but never the less opening issues will still be appreciated.
 Feel free to clone this and use it as you see fit.
 
-HOW TO USE
+# HOW TO USE
 
 Install with npm and run node src/main.js
 
