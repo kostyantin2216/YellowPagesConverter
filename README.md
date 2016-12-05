@@ -1,4 +1,4 @@
-# YellowPagesConverter
+# Yellow Pages Converter
 Get contacts from Yellow Pages in JSON format.
 
 Currently this only works with:
@@ -7,7 +7,7 @@ Currently this only works with:
 This project is for personal use and i will probably not pay attention to issues unless they somehow effect my use case but never the less opening issues will still be appreciated.
 Feel free to clone this and use it as you see fit.
 
-# HOW TO USE
+# How To Use
 
 Install with npm and run node src/main.js
 
