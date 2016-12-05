@@ -6,7 +6,9 @@ function YellowPagesClient() {
 
   var converter = new YellowPagesConverter();
 
-  self.search = function(options, callback) {
+  self.search = search;
+
+  function search(options, callback) {
     var path = '/Search/' + options.service + '/' + options.location + '/' + options.page;
     console.log('Executing search with options:', options);
     http.get({
@@ -33,7 +35,9 @@ function YellowPagesClient() {
 function YellowPagesConverter() {
   var self = this;
 
-  self.convertSearchResults = function(resultsHtml, callback) {
+  self.convertSearchResults = convertSearchResults;
+
+  function convertSearchResults(resultsHtml, callback) {
     console.log('Converting results html');
 
     var results = [];
