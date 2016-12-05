@@ -8,9 +8,9 @@ var yellowPagesClient = new YellowPagesClient(),
     inputManager = new InputManager();
 
 
-initStorageDirectory();
-
 var directory = '';
+
+initStorageDirectory();
 
 function initStorageDirectory() {
   var dataStoragePromptCallback = function(err, result) {
@@ -54,7 +54,6 @@ function startSearching() {
     if(err) {
       console.log('Error occured while trying to get user input:', err);
     } else {
-      result.page = 1;
       yellowPagesClient.search(result, function(err, result) {
         if(err) {
           console.log('Error occured during search:', err);

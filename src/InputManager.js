@@ -20,6 +20,11 @@ function InputManager() {
           description: 'And what location would you like this service to be found in?',
           require: true,
           message: 'Cannot continue without a location.'
+        },
+        {
+          name: 'pages',
+          description: 'How many pages of results would you like?',
+          default: 99999
         }
       ];
 
