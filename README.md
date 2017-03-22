@@ -1,3 +1,5 @@
+Discontinued atm, not enough spare time.
+
 # Yellow Pages Converter
 Get contacts from Yellow Pages in JSON format.
 
