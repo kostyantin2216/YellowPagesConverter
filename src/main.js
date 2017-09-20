@@ -50,15 +50,23 @@ function initStorageDirectory() {
 };
 
 function startSearching() {
-  inputManager.requestSearchParameters(function(err, result) {
+  inputManager.requestSearchParameters(function(err, params) {
     if(err) {
       console.log('Error occured while trying to get user input:', err);
     } else {
-      yellowPagesClient.search(result, function(err, result) {
+      yellowPagesClient.search(params, function(err, results) {
         if(err) {
           console.log('Error occured during search:', err);
         } else {
-          console.log('RESULT:', result);
+          var fileName = params.service + "-" + params.location + ".json";
+          fileManager.writeFile(directory, fileName, JSON.stringify(results), function(err) {
+            if(err) {
+              console.log('could not save results :(', err);
+            } else {
+              console.log('succesfully saved ' + results.length + ' results in ' + directory + '/' + fileName);
+            }
+            startSearching();
+          })
         }
       })
     }

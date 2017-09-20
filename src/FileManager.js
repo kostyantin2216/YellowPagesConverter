@@ -4,12 +4,14 @@ function FileManager() {
   var self = this;
 
   self.directoryExists = directoryExists;
+  self.writeFile = writeFile;
 
   function directoryExists(path, callback) {
     fs.lstat(path, function(err, stats) {
       if(err) {
         if(err.code === 'ENOENT') {
           callback(0, false);
+          fs.mkdirSync(path);
         } else {
           callback('Error during look up for path "' + path + '": ' + err);
         }
@@ -22,6 +24,10 @@ function FileManager() {
       }
     });
   };
+
+  function writeFile(directory, fileName, content, callback) {
+    fs.writeFile(directory + "/" + fileName, content, callback); 
+  }
 }
 
 module.exports = FileManager;

@@ -23,7 +23,7 @@ function YellowPagesClient() {
           callback(err, allResults);
         } else {
           allResults.push(results);
-          if(i === options.pages || results.length === 0) {
+          if(i >= pages || results.length === 0) {
             callback(0, allResults);
           } else {
             getPagesRecursive(++i);
@@ -67,11 +67,12 @@ function YellowPagesConverter() {
     var results = [];
     var $ = cheerio.load(resultsHtml);
 
-    if($.contains('#searchResults', '.result')) {
-      $('.result', '#searchResults').each(function(i, elem) {
-        var name = $('.resultName', this).text();
+    var resultElements = $('.result');
+    if(resultElements) {
+      resultElements.each(function(i, elem) {
+        var name = $('.prod-title', this).text();
         var address = $('.resultAddress', this).text();
-        var telephone = $('.resultContact', this).children().first().text();
+        var telephone = $('.resultMainNumber', this).text().replace(/[\n\t\r]/g,"").trim();
 
         var result = new YellowPagesSearchResult(name.trim(), address.trim(), telephone.trim());
         results.push(result);
@@ -79,7 +80,7 @@ function YellowPagesConverter() {
     } else {
       console.log('No results to convert');
     }
-
+    
     callback(results);
   };
 };
